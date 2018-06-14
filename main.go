@@ -112,6 +112,7 @@ func main() {
 			timeout, _ := strconv.ParseInt(env.GetValue(appid, "expires_in"), 10, 64)
 
 			if curTime >= expire_time+timeout {
+				access_token = ""
 				goto GetToken
 			}
 
