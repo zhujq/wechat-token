@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/devfeel/dotweb"
-	"github.com/devfeel/middleware/basicauth"
 )
 
 type ResBody struct {
@@ -77,18 +76,7 @@ func tokenHandler(ctx dotweb.Context) error {
 
 func InitRoute(server *dotweb.HttpServer) {
 	// 定义Basic Auth的用户名和密码用来防止接口被恶意访问
-	var form = map[string]string{
-		"user": "api",
-		"pass": "wechat",
-	}
 
-	option := basicauth.BasicAuthOption{}
-	option.Auth = func(name, pwd string) bool {
-		if name == form["user"] && pwd == form["pass"] {
-			return true
-		}
-		return false
-	}
 
-	server.GET("/token", tokenHandler).Use(basicauth.Middleware(option))
+	server.GET("/token", tokenHandler)
 }

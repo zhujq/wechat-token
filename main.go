@@ -15,9 +15,9 @@ func main() {
 	var err error
 
 	var (
-		version = flag.Bool("version", false, "version v0.1")
+		version = flag.Bool("version", false, "version v1.0")
 		config  = flag.String("config", "account.json", "config file.")
-		port    = flag.Int("port", 8000, "listen port.")
+		port    = flag.Int("port", 1080, "listen port.")
 	)
 
 	flag.Parse()
